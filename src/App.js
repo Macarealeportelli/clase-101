@@ -1,23 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Buscador from "./componentes/Buscador";
+import React, { useState, useEffect } from "react";
+import Tarjeta from "./componentes/Tarjeta.js";
 
 function App() {
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    console.log("hola, estoy adentro de useEffect");
+
+    fetch("https://api.mercadolibre.com/sites/MLA/search?q=rollers")
+      .then((res) => res.json())
+      .then((data) => {
+        setProductos(data.results);
+      });
+  }, []);
+
+  console.log("estoy fuera", productos);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="barra-busqueda">
+        <Buscador />
+      </div>
+      <h2>Resultados de la búsqueda</h2>
+      <div className="seccion-tarjetas">
+       
+        {productos.map((producto, i) => 
+          // console.log(producto.title)
+          <Tarjeta
+            key={i}
+            titulo={producto.title}
+            precio={producto.price}
+            // envio={producto.shipping}
+            condicion={producto.condition}
+            imagen={producto.thumbnail}
+            />
+          
+        )}
+      </div>
     </div>
   );
 }
