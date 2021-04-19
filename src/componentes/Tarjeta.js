@@ -3,7 +3,7 @@ import "./Tarjeta.css";
 const Tarjeta = ({ producto, handleClickDetalle, idProductoDetalle }) => {
 
   const handleClick = ()=>{
-    handleClickDetalle(id)
+    handleClickDetalle(idProductoDetalle)
   }
 
   return (

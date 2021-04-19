@@ -1,15 +1,15 @@
 import "./TarjetaReview.css";
 
-const TarjetaReview = ({ producto, idProductoDetalle }) => {
+const TarjetaReview = ({ productoDetalle, idProductoDetalle }) => {
   return (
     <article className='tarjeta-review'>
       <div className="imagen-review">
-        <img src={producto.thumbnail} />
+        <img src={productoDetalle.thumbnail} />
       </div>
       <div className='description'>
-        <h4>{producto.title}</h4>
-        <p>${producto.price}</p>
-        <p>Condición: {producto.condition}</p>
+        <h4>{productoDetalle.title}</h4>
+        <p>${productoDetalle.price}</p>
+        <p>Condición: {productoDetalle.condition}</p>
         <button>Comprar</button>
       </div>
     </article>
