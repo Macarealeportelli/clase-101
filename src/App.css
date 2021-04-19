@@ -1,18 +1,20 @@
 .barra-busqueda{
   display: flex;
   justify-content: center;
-  margin-top: 10px;
+  margin: 10px;
 }
 
-.seccion-tarjetas{
+.resultados{
   margin-top: 20px;
   margin-left: 5px;
   margin-right: 5px;
 
   padding: 15px;
-  background-color: pink;
+  background-color: lightsteelblue;
 
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 
 }

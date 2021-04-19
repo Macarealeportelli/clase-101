@@ -1,12 +1,17 @@
-import "./Tarjeta.css";
+import "./TarjetaReview.css";
 
-const TarjetaReview= ({ titulo, condicion, precio, imagen }) => {
+const TarjetaReview = ({ producto, idProductoDetalle }) => {
   return (
-    <article>
-      <div className='imagen'><img src={imagen} /></div>
-      <h4>{titulo}</h4>
-      <p>${precio}</p>
-      <p>Condición: {condicion}</p>
+    <article className='tarjeta-review'>
+      <div className="imagen-review">
+        <img src={producto.thumbnail} />
+      </div>
+      <div className='description'>
+        <h4>{producto.title}</h4>
+        <p>${producto.price}</p>
+        <p>Condición: {producto.condition}</p>
+        <button>Comprar</button>
+      </div>
     </article>
   );
 };
