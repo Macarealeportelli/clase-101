@@ -1,13 +1,13 @@
 import "./Tarjeta.css";
 
-const Tarjeta = ({ producto, handleClickDetalle, idProductoDetalle }) => {
+const Tarjeta = ({ producto, handleClickDetalle,  id }) => {
 
-  const handleClick = ()=>{
-    handleClickDetalle(idProductoDetalle)
-  }
+const handleClick=(id)=>{
+  handleClickDetalle(id)
+}
 
   return (
-    <article className='tarjeta-principal' idProductoDetalle={producto.id}>
+    <article className='tarjeta-principal' key={producto.id} id={producto.id}>
       <div className="imagen">
         <img src={producto.thumbnail} />
       </div>

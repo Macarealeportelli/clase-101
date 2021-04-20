@@ -9,11 +9,12 @@ function App() {
   const [valorDelInput, setValorDelInput] = useState("");
   const [busqueda, setBusqueda] = useState("");
   const [tipoDeVista, setTipoDeVista] = useState("busqueda");
-  const [idProductoDetalle, setIdProductoDetalle] = useState("");
-  const [productoDetalle, setProductoDetalle] = useState("");
+  const [productoDetalle, setProductoDetalle] = useState({});
+  const [id, setId] = useState("");
+ 
 
   useEffect(() => {
-    console.log("hola, estoy adentro de useEffect");
+   
 
     fetch(`https://api.mercadolibre.com/sites/MLA/search?q=${valorDelInput}`)
       .then((res) => res.json())
@@ -22,15 +23,16 @@ function App() {
       });
   }, [busqueda]);
 
-  useEffect(() => {
-    fetch(`https://api.mercadolibre.com/items/${idProductoDetalle}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setProductoDetalle(data);
-      });
-  }, [idProductoDetalle]);
-
-  console.log("estoy fuera", productos);
+  
+ useEffect(()=>{
+ if (id){
+  fetch(`https://api.mercadolibre.com/items/${id}`)
+   .then(res=>res.json())
+   .then((data)=>{
+     setProductoDetalle(data)
+   })
+  }
+  }, [id])
 
   const handleChange = (e) => {
     setValorDelInput(e.target.value);
@@ -42,10 +44,10 @@ function App() {
     setBusqueda(valorDelInput);
   };
 
-  const handleClickDetalle = (idProductoDetalle) => {
-    setTipoDeVista("detalle");
-    setIdProductoDetalle(idProductoDetalle);
-  };
+ const handleClickDetalle=(id)=>{
+   console.log(id)
+   setTipoDeVista('detalle')
+ }
 
   return (
     <div>
@@ -57,13 +59,11 @@ function App() {
       <h2>Resultados de la búsqueda</h2>
       {tipoDeVista === "busqueda" && (
         <Resultados
-          productos={productos}
-          handleClickDetalle={handleClickDetalle}
+          productos={productos}  handleClickDetalle={handleClickDetalle}
         />
       )}
-      {tipoDeVista === "detalle" && (
-        <TarjetaReview productoDetalle={productoDetalle.id} />
-      )}
+     {tipoDeVista === 'detalle' && 
+     <TarjetaReview productoDetalle={productoDetalle} />}
     </div>
   );
 }

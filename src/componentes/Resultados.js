@@ -1,13 +1,13 @@
 import Tarjeta from "./Tarjeta.js";
 
 
-const Resultados = ({ productos, handleClickDetalle }) => {
+const Resultados = ({ productos, handleClickDetalle}) => {
   return (
     <section className="resultados">
-      {productos.map((producto, i) => (
+      {productos.map((producto) => (
         // console.log(producto.title)
-        <Tarjeta producto={producto} 
-        handleClickDetalle={handleClickDetalle}/>
+        <Tarjeta producto={producto} key={producto.id} handleClickDetalle={handleClickDetalle} 
+      />
 
        
       ))}
