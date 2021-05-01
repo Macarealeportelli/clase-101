@@ -1,5 +1,5 @@
 .tarjeta-review {
-  width: 100%;
+  width: 80%;
   display: flex;
 
   background-color: white;
@@ -11,9 +11,16 @@
   margin: 10px;
 }
 
-.description {
-  width: 40%;
+.descripcion {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.detalle {
+  width: 50%;
   margin: 20px;
+  font-size: 12px;
 
 }
 .imagen-review {

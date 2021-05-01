@@ -1,9 +1,3 @@
-.barra-busqueda{
-  display: flex;
-  justify-content: center;
-  margin: 10px;
-}
-
 .resultados{
   margin-top: 20px;
   margin-left: 5px;
@@ -17,4 +11,5 @@
   align-items: center;
   justify-content: center;
 
+  font-size: 10px;
 }
