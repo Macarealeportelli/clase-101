@@ -1,0 +1,33 @@
+.barra-busqueda {
+  background-color: lightseagreen;
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  font-size: 12px;
+
+}
+
+.buscador {
+  width:80%;
+  height: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: flex-end;
+  
+}
+
+label {
+  margin: 5px;
+ 
+}
+select{
+    margin: 5px;
+    font-size: 12px;
+}
+
+.material-icons{
+    color: rgb(255, 255, 255);
+}
