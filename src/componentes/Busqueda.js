@@ -1,7 +1,36 @@
-import "./Buscador1.css";
+// import "./Buscador1.css";
 import React, { useState, useEffect } from "react";
 import Resultados from "./Resultados.js";
 import TarjetaReview from "./TarjetaReview.js";
+import styled from "styled-components";
+
+const BarraBusqueda = styled.div`
+  background-color: lightseagreen;
+  
+  padding: 10px;
+
+  display: flex;
+  justify-content: center;
+  
+`;
+
+const Buscador = styled.div`
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+`;
+
+const Filtros = styled.div`
+ display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+`;
+
+const FiltroInterno = styled(Filtros)`
+  margin: 10px;
+  font-size: 12px;
+`;
 
 const Busqueda = () => {
   const [valorDelInput, setValorDelInput] = useState("");
@@ -59,26 +88,26 @@ const Busqueda = () => {
 
   return (
     <>
-      <div className="barra-busqueda">
+      <BarraBusqueda className="barra-busqueda">
         <form onSubmit={handleSubmit}>
-          <div className="buscador">
+          <Buscador className="buscador">
             <input value={valorDelInput} onChange={handleChange} />
             <input type="submit" value="Buscar" />
-          </div>
-          <div className="filtros">
-            <label>
+          </Buscador>
+          <Filtros className="filtros">
+            <FiltroInterno>
               <input type="checkbox" value="Envío Gratuito" /> Envío Gratis
-            </label>
-            <label>
-              Ordenar por:
+            </FiltroInterno>
+            <FiltroInterno>
+              <p>Ordenar por: </p>
               <select name="buscador-orden">
                 <option value="menor-mayor">Menor Precio - Mayor Precio</option>
                 <option value="mayor-menor">Mayor Precio - Menor Precio</option>
               </select>
-            </label>
-            <label>
-              <label>
-                Buscar en:
+            </FiltroInterno>
+            <FiltroInterno>
+              <FiltroInterno>
+              <p>Buscar en: </p>
                 <select name="buscador-ciudad">
                   <option value="capital-federal">Capital Federal</option>
                   <option value="buenos-aires">Bs. As</option>
@@ -86,12 +115,12 @@ const Busqueda = () => {
                   <option value="cordoba">Córdoba</option>
                   <option value="tucuman">Tucumán</option>
                 </select>
-              </label>
+              </FiltroInterno>
               <input type="checkbox" value="oficial" /> Tienda Oficial
-            </label>
-          </div>
+            </FiltroInterno>
+          </Filtros>
         </form>
-      </div>
+      </BarraBusqueda>
 
       <h2>Resultados de la búsqueda</h2>
       {tipoDeVista === "busqueda" && (
